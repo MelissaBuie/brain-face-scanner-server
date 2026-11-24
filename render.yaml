@@ -1,0 +1,15 @@
+# One-click deploy on Render's free plan: New > Blueprint > pick this repo.
+# The database lives on Neon's free plan; paste its connection string as DATABASE_URL.
+services:
+  - type: web
+    name: brain-face-scanner-server
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        sync: false
