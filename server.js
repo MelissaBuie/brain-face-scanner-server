@@ -10,15 +10,15 @@ const signup = require('./controllers/signup');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+const { setupDatabase } = require('./db/setup');
 
 
 const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
-      ssl: {
-        rejectUnauthorized: false
-      },
+        // Hosted databases (Neon, Render) need SSL; a local one usually doesn't.
+        ssl: process.env.DATABASE_SSL === 'false' ? false : { rejectUnauthorized: false },
     },
 });
 
@@ -41,6 +41,15 @@ app.put('/image', (req, res) => {image.handleImagePut(req, res, db)});
 
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`app is running on port ${process.env.PORT}`);
-})
+const PORT = process.env.PORT || 3000;
+
+setupDatabase(db)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`app is running on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error('Could not set up the database:', err.message);
+        process.exit(1);
+    });
