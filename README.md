@@ -1,6 +1,6 @@
 # Brain Face Scanner Server
 
-The back end for [Brain Face Scanner](https://github.com/the-codingphoenix/brain-face-scanner), a React app that finds faces in photos. It handles sign-up and sign-in and keeps each user's entry count in PostgreSQL. Face detection runs in the browser with MediaPipe, so the API needs no AI service key.
+The back end for [Brain Face Scanner](https://github.com/MelissaBuie/brain-face-scanner), a React app that finds faces in photos. It handles sign-up and sign-in and keeps each user's entry count in PostgreSQL. Face detection runs in the browser with MediaPipe, so the API needs no AI service key.
 
 ## Built with
 
@@ -23,7 +23,7 @@ The back end for [Brain Face Scanner](https://github.com/the-codingphoenix/brain
 You need Node.js 20 and a PostgreSQL database. The server creates its `users` and `login` tables on first start.
 
 ```bash
-git clone https://github.com/the-codingphoenix/brain-face-scanner-server.git
+git clone https://github.com/MelissaBuie/brain-face-scanner-server.git
 cd brain-face-scanner-server
 npm install
 cp .env.example .env   # then fill in DATABASE_URL
