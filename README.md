@@ -2,6 +2,8 @@
 
 The back end for [Brain Face Scanner](https://github.com/MelissaBuie/brain-face-scanner), a React app that finds faces in photos. It handles sign-up and sign-in and keeps each user's entry count in PostgreSQL. Face detection runs in the browser with MediaPipe, so the API needs no AI service key.
 
+**Live API:** https://brain-face-scanner-server.onrender.com · **Live app:** https://melissabuie.github.io/brain-face-scanner/
+
 ## Built with
 
 - Node.js and Express
